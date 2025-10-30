@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// ===== Cấu trúc cây =====
+
 typedef struct Cars {
     char model[50];
     struct Cars *child;
@@ -10,17 +10,17 @@ typedef struct Cars {
     struct Cars *parent;
 } Cars;
 
-// ===== Tạo node =====
+
 Cars *createCar(const char *model) {
     Cars *newCar = (Cars *)malloc(sizeof(Cars));
-    strcpy(newCar->model, model);  // <-- chỗ này m bị sai ở bản trước: phải là strcpy, ko phải strcmp
+    strcpy(newCar->model, model);  
     newCar->child = NULL;
     newCar->sibling = NULL;
     newCar->parent = NULL;
     return newCar;
 }
 
-// ===== Thêm node con =====
+
 void addChild(Cars *parent, Cars *child) {
     child->parent = parent;
     if (parent->child == NULL) {
@@ -33,7 +33,7 @@ void addChild(Cars *parent, Cars *child) {
     }
 }
 
-// ===== Duyệt cây để tìm xe theo tên =====
+
 void findCarInfo(Cars *root, const char *name) {
     if (root == NULL)
         return;
@@ -57,7 +57,7 @@ void findCarInfo(Cars *root, const char *name) {
     findCarInfo(root->sibling, name);
 }
 
-// ===== Giải phóng bộ nhớ =====
+
 void freeTree(Cars *root) {
     if (root == NULL) return;
     freeTree(root->child);
@@ -65,7 +65,7 @@ void freeTree(Cars *root) {
     free(root);
 }
 
-// ===== Tạo cây ví dụ =====
+
 Cars *buildCarTree() {
     Cars *root = createCar("Cars");
 
@@ -74,23 +74,23 @@ Cars *buildCarTree() {
     addChild(root, toyota);
     addChild(root, honda);
 
-    // Toyota types
+    
     Cars *sedan = createCar("Sedan");
     Cars *suv = createCar("SUV");
     addChild(toyota, sedan);
     addChild(toyota, suv);
 
-    // Toyota Sedan models
+    
     Cars *camry = createCar("Camry");
     Cars *corolla = createCar("Corolla");
     addChild(sedan, camry);
     addChild(sedan, corolla);
 
-    // Toyota SUV models
+    
     Cars *fortuner = createCar("Fortuner");
     addChild(suv, fortuner);
 
-    // Honda
+    
     Cars *sedanH = createCar("Sedan");
     addChild(honda, sedanH);
 

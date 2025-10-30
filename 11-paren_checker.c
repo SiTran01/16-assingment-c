@@ -75,9 +75,9 @@ int main() {
     scanf("%s", exp);
 
     if (isBalanced(exp))
-        printf("✅ Balanced parentheses\n");
+        printf("Balanced parentheses\n");
     else
-        printf("❌ Not balanced parentheses\n");
+        printf("Not balanced parentheses\n");
 
     return 0;
 }

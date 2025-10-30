@@ -9,7 +9,7 @@ typedef struct Node{
 }Node;
 
 Node *createN_Node(int n){
-    Node *head = NULL, *temp =NULL, *last = NULL;
+    Node *head = NULL, *temp = NULL, *last = NULL;
     for(int i = 1; i <= n; i++){
         temp = (Node *)malloc(sizeof(Node));
         temp->id = i;
@@ -38,7 +38,7 @@ int josephus(int n, int k){
             ptr = ptr->next;
         }
 
-        // eliminated person k
+        // eliminated person k  
         printf("Eliminated: %d\n", ptr->id);
         prev->next = ptr->next;
         free(ptr);

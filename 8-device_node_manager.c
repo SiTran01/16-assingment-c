@@ -10,13 +10,13 @@ typedef struct Device {
 
 Device *head = NULL;
 
-// Thêm thiết bị mới
+
 void addDevice(char *name) {
     Device *newDevice = (Device *)malloc(sizeof(Device));
     strcpy(newDevice->nameDevice, name);
     newDevice->next = NULL;
 
-    // Gán ID tự động
+   
     int id = 1;
     if (head == NULL) {
         head = newDevice;
@@ -34,7 +34,7 @@ void addDevice(char *name) {
     printf("✅ Device '%s' added with ID %d\n", name, id);
 }
 
-// Xóa thiết bị theo ID
+
 void rmDevicebyID(int id) {
     if (head == NULL) {
         printf("⚠️ Devices list is empty!\n");
@@ -62,7 +62,7 @@ void rmDevicebyID(int id) {
     free(temp);
 }
 
-// Xóa thiết bị theo tên
+
 void rmDevicebyName(char *name) {
     if (head == NULL) {
         printf("⚠️ Devices list is empty!\n");
@@ -91,7 +91,7 @@ void rmDevicebyName(char *name) {
     free(temp);
 }
 
-// Hiển thị tất cả thiết bị
+
 void showAllDevices() {
     if (head == NULL) {
         printf("📭 No devices found!\n");
@@ -109,7 +109,7 @@ void showAllDevices() {
     printf("-------------------------------\n");
 }
 
-// Giải phóng toàn bộ bộ nhớ
+
 void freeAllDevices() {
     Device *temp = head;
     while (temp != NULL) {
